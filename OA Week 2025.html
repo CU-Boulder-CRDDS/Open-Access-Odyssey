@@ -9,19 +9,150 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play OA Week 2025.</tw-noscript></noscript></tw-story>
-<tw-storydata name="OA Week 2025" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="8297FBF0-BDCB-4C87-8FA5-AC0D599B6294" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="1075,500" size="100,100">Start here!
-Try to navigate academic life without spending your takeout food budget!
+<tw-storydata name="OA Week 2025" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="8297FBF0-BDCB-4C87-8FA5-AC0D599B6294" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="300,375" size="100,100">{
+(set: $UnderGrad1A to 0)
+(set: $UnderGrad1B to 0)
+(set: $UnderGrad1C to 0)
+(set: $articles to 0)
 
+Try to navigate academic life without spending your takeout food budget!
+&lt;br&gt;&lt;br&gt;
 Learn about:
-Access to scholarly articles
-Publishing scholarly articles
-Impact and scholarly monographs
+&lt;br&gt;
+
+* Access to scholarly articles
+* Publishing scholarly articles
+* Impact and scholarly monographs
+&lt;br&gt;
+&lt;br&gt;
 
 [[Undergrad Student]]
+&lt;br&gt;
 [[Grad Student]]
+&lt;br&gt;
 [[Faculty Member]]
-</tw-passagedata><tw-passagedata pid="2" name="Undergrad Student" tags="" position="1075,625" size="100,100">a second time
-[[test]]</tw-passagedata><tw-passagedata pid="3" name="Grad Student" tags="" position="1200,625" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="950,625" size="100,100">Testing to see if this works.</tw-passagedata><tw-passagedata pid="5" name="test" tags="" position="1075,750" size="100,100"></tw-passagedata></tw-storydata>
+}</tw-passagedata><tw-passagedata pid="2" name="Undergrad Student" tags="" position="875,100" size="100,100">{You’re an undergraduate student and you’re writing a paper that’s due tomorrow. You’ve identified an argument that you need to support with a little more research.Where will you search for articles first?
+&lt;br&gt;
+&lt;br&gt;
+
+(if: $UnderGrad1A is 0)[
+	[[Libraries OneSearch]]
+   ]
+    (else:)[
+    Libraries OneSearch (You&#39;ve already done this!)
+    ]
+&lt;br&gt;
+(if: $UnderGrad1B is 0)[
+	[[Google Scholar]]
+    ]
+    (else:)[
+    Google Scholar (You&#39;ve already done this!)
+    ]
+&lt;br&gt;
+(if: $UnderGrad1C is 0)[
+	[[Publisher’s website]]
+    ]
+    (else:)[
+    Publisher’s website (You&#39;ve already done this!)
+	]
+
+
+}</tw-passagedata><tw-passagedata pid="3" name="Grad Student" tags="" position="900,400" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="850,700" size="100,100">Testing to see if this works.</tw-passagedata><tw-passagedata pid="5" name="Publisher’s website" tags="" position="1125,275" size="100,100">{
+(set: $UnderGrad1C to 1)
+(set: $articles to $articles +1)
+
+Publisher’s site 
+The professor of your class happened to write an article on this very topic - he would love it if you cited his paper! But the library doesn’t have a subscription - how can that be? Did you know that universities don’t automatically have access to research outputs produced by researchers at that institution? Libraries must buy back access to articles, conference proceedings and more through pricey publisher subscriptions. The Libraries subscription to Elsevier alone costs nearly as much as Hailey Beiber’s engagement ring, every year! 
+Option: [[Spend $40]] for 24 hours of access to your professor’s article
+
+
+
+}</tw-passagedata><tw-passagedata pid="6" name="Google Scholar" tags="" position="1125,150" size="100,100">{
+(set: $UnderGrad1B to 1)
+(set: $articles to $articles +1)
+
+Google Scholar - ILL
+You search Google Scholar and find another article that provides a different point of view on your argument.  (screenshot on VPN of option to get article via ILL).
+&lt;br&gt;
+Unfortunately, the library doesn’t have access to the article. You can request it through Inter-Library loan and get it within a few hours. You also remember a friend mentioning a plugin called Unpaywall which points to open access versions of articles behind a paywall.
+&lt;br&gt;
+1.I’ll order some Thai and request it through [[ILL]]
+
+2. I need to finish this paper now, let’s look through [[Unpaywall]]
+
+
+
+
+
+}</tw-passagedata><tw-passagedata pid="7" name="Libraries OneSearch" tags="" position="1125,25" size="100,100">{
+(set: $UnderGrad1A to 1)
+(set: $articles to $articles +1)
+
+Onesearch
+You conduct a quick keyword search on Libraries OneSearch and find a journal article published through SpringerNature that supports your argument through a scientific study. You download the article easily, cite it in your paper, and you are ready to find another article that supports the argument in your paper. Did you know? The Libraries subscription to Springer Nature costs more than a Porsche 918 Spyder every year?
+
+
+(if: $articles is 3)[
+	[[You’ve got all the articles you need!|Success1]]
+]
+(else:)[
+	[[(Back to options)|Undergrad Student]]
+    ]
+
+}</tw-passagedata><tw-passagedata pid="8" name="Success1" tags="" position="1575,275" size="100,100">Success!
+You’ve got all the articles you need! Go back and explore another topic?
+Go back to [[Start]]</tw-passagedata><tw-passagedata pid="9" name="ILL" tags="" position="1375,125" size="100,100">{
+
+ILL
+ILL is a free document delivery service offered to CU Boulder affiliates. Most requests for digital articles can be filled within a few hours. 
+You eat some Thai, get a few hours of sleep, and wake in the morning to the article in your inbox. You get it cited and are almost ready to turn in your paper. Did you know last year CU Libraries filled nearly 13k ILL requests for articles and books!. (Back to options OR  Learn about Unpaywall)
+
+
+(if: $articles is 3)[
+	[[You’ve got all the articles you need!|Success1]]
+]
+(else:)[
+	[[(Back to options)|Undergrad Student]]
+    ]
+
+
+
+}</tw-passagedata><tw-passagedata pid="10" name="Unpaywall" tags="" position="1375,275" size="100,100">{
+
+Unpaywall
+You install the extension for Unpaywall, an open database of over 54 million free articles. (https://unpaywall.org/) 
+It turns out the author of the article you needed posted a version on an insitutional repository. You cite the article in your paper, which you are almost ready to turn in, and you still have some time left to pop a pizza in the oven! (Back to options OR Learn about ILL)
+
+(if: $articles is 3)[
+	[[You’ve got all the articles you need!|Success1]]
+]
+(else:)[
+	[[(Back to options)|Undergrad Student]]
+    ]
+
+
+
+}</tw-passagedata><tw-passagedata pid="11" name="Spend $40" tags="" position="1325,425" size="100,100">{
+
+Oh no! You can’t spend $40 - that’s nearly your whole takeout budget for the week! Also, if you had spent $40 for the article, did you know none of that money would go to your professor? Unless an author publishes their work open access, they typically sign away all rights to the work, meaning they no longer have many rights to share and distribute the work themselves, to students or the public.
+How about looking for the article on Unpaywall. Let’s [[downlaod the extension]]!
+
+
+
+}</tw-passagedata><tw-passagedata pid="12" name="downlaod the extension" tags="" position="1500,425" size="100,100">{
+Unpaywall
+You install the extension for Unpaywall, an open database of over 54 million free articles. (https://unpaywall.org/) 
+It turns out your professor posted a version on an insitutional repository. You cite the article in your paper, which you are almost ready to turn in (Back to options)
+
+
+(if: $articles is 3)[
+	[[You’ve got all the articles you need!|Success1]]
+]
+(else:)[
+	[[(Back to options)|Undergrad Student]]
+    ]
+
+}</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

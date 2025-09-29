@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play OA_Week_2025.</tw-noscript></noscript></tw-story>
-<tw-storydata name="OA_Week_2025" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="8297FBF0-BDCB-4C87-8FA5-AC0D599B6294" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="250,200" size="100,100">{
+<tw-storydata name="OA_Week_2025" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="8297FBF0-BDCB-4C87-8FA5-AC0D599B6294" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="300,375" size="100,100">{
 (set: $UnderGrad1A to 0)
 (set: $UnderGrad1B to 0)
 (set: $UnderGrad1C to 0)
@@ -19,10 +19,6 @@
 (set: $Grad1A to 0)
 (set: $Grad1B to 0)
 (set: $Grad1C to 0)
-
-
-
-
 Try to navigate academic life without spending your takeout food budget!
 &lt;br&gt;&lt;br&gt;
 Learn about:
@@ -62,45 +58,31 @@ Choose your character:
 	]
 
 
-}</tw-passagedata><tw-passagedata pid="3" name="Grad Student" tags="" position="600,650" size="100,100">{
-#Grad  Scenario
-Congratulations! You just got done writing your first scholarly article! Now you must decide which journal to submit to. You want to make sure the journal is trustworthy but will have a lot of visibility and reach. Which journal will you choose?
-
-(if: $Grad1A is 0)[
-* Option 1: [[High impact journal recommended by your advisor]]
-   ]
-    (else:)[
-* Option 1: High impact journal recommended by your advisor (You&#39;ve already done this!)
-    ]
-(if: $Grad1B is 0)[
-* Option 2: [[Open access journal a librarian helped you find]]
-   ]
-    (else:)[
-* Option 2: Open access journal a librarian helped you find (You&#39;ve already done this!)
-    ]
-(if: $Grad1C is 0)[
-* Option 3: [[Journal a co-author at another institution likes]]
-   ]
-    (else:)[
-* Option 3: Journal a co-author at another institution likes (You&#39;ve already done this!)
-    ]
+}</tw-passagedata><tw-passagedata pid="3" name="Grad Student" tags="" position="850,650" size="100,100">Congratulations! You just got done writing your first scholarly article! Now you must decide which journal to submit to. You want to make sure the journal is trustworthy but will have a lot of visibility and reach. Which journal will you choose?
 
 
-}</tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="375,875" size="100,100">Testing to see if this works.</tw-passagedata><tw-passagedata pid="5" name="Publisher’s website" tags="" position="1125,275" size="100,100">{
+(if: $Grad1A is 0)[[[Option 1: High impact journal recommended by your advisor-&gt;Advisor&#39;s Journal]]]
+    (else:)+(color: &quot;gold&quot;)[Option 1: High impact journal recommended by your advisor (You&#39;ve already done this!)]
+
+(if: $Grad1B is 0)[[[Option 2: Open access journal a librarian helped you find-&gt;Librarian&#39;s Journal]] ]
+    (else:)+(color: &quot;gold&quot;)[Option 2: Open access journal a librarian helped you find (You&#39;ve already done this!)]
+(if: $Grad1C is 0)[[[Option 3: Journal a co-author at another institution likes-&gt;Co-author&#39;s Journal]] ]
+    (else:)+(color: &quot;gold&quot;)[Option 3: Journal a co-author at another institution likes (You&#39;ve already done this!)]
+    </tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="625,975" size="100,100">Testing to see if this works.</tw-passagedata><tw-passagedata pid="5" name="Publisher’s website" tags="" position="1125,275" size="100,100">{
 (set: $UnderGrad1D to 1)
 
-#Publisher’s site 
+# Publisher’s site 
 The professor of your class happened to write an article on this very topic - he would love it if you cited his paper! But the library doesn’t have a subscription - how can that be?
 &lt;br&gt;
-Did you know that universities don’t automatically have access to research outputs produced by researchers at that institution? Libraries must buy back access to articles, conference proceedings and more through pricey publisher subscriptions. The Libraries subscription to Elsevier alone costs nearly as much as &lt;a href=&quot;https://www.goodstoneinc.com/blogs/news/the-10-most-expensive-celebrity-engagement-rings-goodstone&quot; target=&quot;_blank&quot;&gt;Hailey Beiber’s engagement ring&lt;/a&gt;, every year! 
+Did you know that universities don’t automatically have access to research outputs produced by researchers at that institution? Libraries must buy back access to articles, conference proceedings and more through pricey publisher subscriptions. The Libraries subscription to Elsevier alone costs nearly as much as (link-append: &quot;Hailey Beiber’s engagement ring&quot;)[(goto-url:&quot;https://www.goodstoneinc.com/blogs/news/the-10-most-expensive-celebrity-engagement-rings-goodstone&quot; )], every year! 
 &lt;br&gt;
 * [[Spend $40]] for 24 hours of access to your professor’s article
 
 
 
-}</tw-passagedata><tw-passagedata pid="6" name="Google Scholar" tags="" position="1150,150" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="6" name="Google Scholar" tags="" position="1150,125" size="100,100">{
 
-#Google Scholar
+# Google Scholar
 
 You search Google Scholar and find another article that provides a different point of view on your argument.  (screenshot on VPN of option to get article via ILL).
 &lt;br&gt;
@@ -120,15 +102,15 @@ Unfortunately, the library doesn’t have access to the article. You can request
     ]
 
 
-}</tw-passagedata><tw-passagedata pid="7" name="Libraries OneSearch" tags="" position="1125,25" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="7" name="Libraries OneSearch" tags="" position="1150,0" size="100,100">{
 (set: $UnderGrad1A to 1)
 (set: $articles to $articles +1)
 
-#Onesearch
+# Onesearch
 &lt;img src=&quot;OneSearch.png&quot; width=&quot;720&quot;&gt;
 
 &lt;br&gt;
-You conduct a quick keyword search on Libraries OneSearch and find a journal article published through SpringerNature that supports your argument through a scientific study. You download the article easily, cite it in your paper, and you are ready to find another article that supports the argument in your paper. Did you know? The Libraries subscription to Springer Nature costs more than a &lt;a href=&quot;https://en.wikipedia.org/wiki/Porsche_918_Spyder&quot; target=&quot;_blank&quot;&gt;Porsche 918 Spyder&lt;/a&gt; every year?
+You conduct a quick keyword search on Libraries OneSearch and find a journal article published through SpringerNature that supports your argument through a scientific study. You download the article easily, cite it in your paper, and you are ready to find another article that supports the argument in your paper. Did you know? The Libraries subscription to Springer Nature costs more than a  (link-append: &quot;Porsche 918 Spyder&quot;)[(open-url: &quot;https://en.wikipedia.org/wiki/Porsche_918_Spyder&quot;)] every year?
 
 &lt;br&gt;
 (if: $articles is 3)[
@@ -139,7 +121,7 @@ You conduct a quick keyword search on Libraries OneSearch and find a journal art
     ]
 
 }
-</tw-passagedata><tw-passagedata pid="8" name="Success1" tags="" position="1575,275" size="100,100">{
+</tw-passagedata><tw-passagedata pid="8" name="Success1" tags="" position="1675,100" size="100,100">{
 #Success!
 You’ve got all the articles you need! Go back and explore another topic?
 Go back to [[Start]]
@@ -171,8 +153,8 @@ Did you know last year CU Libraries filled nearly 13k ILL requests for articles 
 (set: $GoogSchol to $GoogSchol +1)
 
 
-#Unpaywall
-You install the extension for &lt;a href=&quot;https://unpaywall.org/&quot; target=&quot;_blank&quot;&gt;Unpaywall&lt;/a&gt;, an open database of over 54 million free articles.
+# Unpaywall
+You install the Unpaywall extension, an open database of over 54 million free articles.  (link-append:&quot;It&#39;s available for free online&quot;)[(goto-url:&quot;https://unpaywall.org/&quot;)] 
 &lt;br&gt;
 It turns out the author of the article you needed posted a version on an insitutional repository. You cite the article in your paper, which you are almost ready to turn in, and you still have some time left to pop a pizza in the oven!
 
@@ -194,83 +176,31 @@ How about looking for the article on Unpaywall. Let’s [[download the extension
 
 
 
-}</tw-passagedata><tw-passagedata pid="12" name="downlaod the extension" tags="" position="1500,425" size="100,100">{
+<<<<<<< Updated upstream
+}</tw-passagedata><tw-passagedata pid="12" name="Advisor&#39;s Journal" tags="" position="1125,625" size="100,100">(set: $Grad1A to 1)
+# High impact journal recommended by your advisor
+This is a great, high impact journal, but you found out the acceptance rate is very low and the journal is behind a paywall, which means people won’t be able to access it unless they are affiliated with an institution that has a subscription or if they pay $50
+=======
+}</tw-passagedata><tw-passagedata pid="12" name="downlaod the extension" tags="" position="1600,425" size="100,100">{
 #Unpaywall
 You install the extension for Unpaywall, an open database of over 54 million free articles. (https://unpaywall.org/) 
 It turns out your professor posted a version on an insitutional repository. You cite the article in your paper, which you are almost ready to turn in (Back to options)
+>>>>>>> Stashed changes
 
 
-(if: $articles is 3)[
-	[[You’ve got all the articles you need!|Success1]]
-]
-(else:)[
-	[[(Back to search options)|Undergrad Student]]
-    ]
+Submit your article to this journal anyways
+[[Explore other options-&gt;Grad Student]] </tw-passagedata><tw-passagedata pid="13" name="Librarian&#39;s Journal" tags="" position="1150,775" size="100,100">(set: $Grad1B to 1)
+# Open access journal a librarian helped you find
+Your librarian helped you explore open access options in your field though the Directory of Open Access Journals, a database of over 20k quality OA journals in every field (doaj.org) You found a trustworthy journal widely read it your field: 
 
-}</tw-passagedata><tw-passagedata pid="13" name="High impact journal recommended by your advisor" tags="" position="850,450" size="100,100">{
-(set: $Grad1A to 1)
-
-#Option 1: Advisor’s journal
-This is a great, high impact journal, but you found out the acceptance rate is very low and the journal is behind a paywall, which means people won’t be able to access it unless they are affiliated with an institution that has a subscription or if they pay $50/
-
-Options:
-
-* [[Submit your article to this journal anyways]]
-* Go back to [[options|Grad Student]].
-
-}</tw-passagedata><tw-passagedata pid="14" name="Open access journal a librarian helped you find" tags="" position="950,675" size="100,100">{
-(set: $Grad1B to 1)
-#Title
-Your librarian helped you explore open access options in your field though the Directory of Open Access Journals, a database of over 20k quality OA journals in every field (doaj.org) You found a trustworthy journal widely read it your field.
-
-* [[Publish here]]
-* Go back and pick a different journal (back to [[options|Grad Student]])
-
-
-}</tw-passagedata><tw-passagedata pid="15" name="Journal a co-author at another institution likes" tags="" position="900,850" size="100,100">{
-(set: $Grad1C to 1)
-#Title
+&lt;br&gt;
+1) publish here or 2) Go back and pick a different journal (back to options)</tw-passagedata><tw-passagedata pid="14" name="Co-author&#39;s Journal" tags="" position="900,875" size="100,100">(set: $Grad1C to 1)
+# Journal a co-author at another institution likes
 Your co-author recommended an open access  journal but it has a $6,000 article processing charge (APC)-what do you do?
-
-* Go back to [[options|Grad Student]]
-* [[Try to find the funds to pay]]
-
-Did you know some journals charge APCs for open access? The average APC is more than $2k, and prestigious publishers like Nature charge up to $12k per article! Recent estimatessuggest CU Boulder authors may spend up to $6 million per year on APC costs! (link to State of Open report)
-
-}</tw-passagedata><tw-passagedata pid="16" name="Submit your article to this journal anyways" tags="" position="1100,525" size="100,100">{
-Oh no, your article gets rejected! You’ll need to submit to a different journal.
-
-* (Go back to [[options|Grad Student]])
-}</tw-passagedata><tw-passagedata pid="17" name="Publish here" tags="" position="1100,675" size="100,100">{
-Great news! The journal you found is Diamond open access, meaning it charges no fees to be openly available to everyone! Your article is widely read and you have enough money left over to order takeout sushi this weekend! 
 &lt;br&gt;
-[[Ending]]
-
-}
-
-</tw-passagedata><tw-passagedata pid="18" name="Ending" tags="" position="1300,650" size="100,100">{
-#Success!
-Your article was published and you’re getting great attention for your work. Go back and explore another topic?
-&lt;br&gt;
-[[Go back to start|Start]]
-
-}</tw-passagedata><tw-passagedata pid="19" name="Try to find the funds to pay" tags="" position="1075,850" size="100,100">{
-#Title
-You found $3,000 in departmental funds but you’d have to pay the rest out of pocket
-
-* [[Ask your co-author to split costs]]
-* Go to find a new journal (Back to [[options|Grad Student]])
-
-
-}</tw-passagedata><tw-passagedata pid="20" name="Ask your co-author to split costs" tags="" position="1275,850" size="100,100">{
-#Title
-You and your co-author each pay $1,500 out of pocket to publish the article Open Access Oh, no, you’ve lost your takeout budget!
-&lt;br&gt;
-Don’t lose your Boba and cofee budget in the future: explore OA funding support for APCs through the Libraries (link to support page)
-&lt;br&gt;
-([[Go back to top level options|Start]])
-
-}</tw-passagedata></tw-storydata>
+[[Go back to options-&gt;Grad Student]] 
+Try to find the funds to pay
+Did you know some journals charge APCs for open access? The average APC is more than $2k, and prestigious publishers like Nature charge up to $12k per article! Recent estimatessuggest CU Boulder authors may spend up to $6 million per year on APC costs! (link to State of Open report)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

@@ -40,7 +40,16 @@ a:visited:hover {
 (set: $Grad1A to 0)
 (set: $Grad1B to 0)
 (set: $Grad1C to 0)
-
+(set: $Faculty_impact to 0)
+(set: $Faculty_impact_oa to 0)
+(set: $Faculty_impact_paywall to 0)
+(set: $Faculty_impact_paywall_scholar to 0)
+(set: $Faculty_mono to 0)
+(set: $Faculty_mono_self to 0)
+(set: $Faculty_mono_thai to 0)
+(set: $Faculty_mono_open to 0)
+(set: $Faculty_mono_open_ethiopian to 0)
+(set: $Faculty_mono_open_publish to 0)
 
 Try to navigate academic life without spending your takeout food budget!
 &lt;br&gt;&lt;br&gt;
@@ -105,7 +114,33 @@ Congratulations! You just got done writing your first scholarly article! Now you
     ]
 
 
-}</tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="375,875" size="100,100">Testing to see if this works.</tw-passagedata><tw-passagedata pid="5" name="Publisher’s website" tags="" position="1125,275" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="375,875" size="100,100">{
+# Faculty Member
+You’re finally an assistant professor. You can do this the rest of your life... as long as you get tenure!  To do that, you need to make sure you publish a few high impact articles as well as a monograph. Which will you worry about first?
+
+&lt;br&gt;
+&lt;br&gt;
+
+(if: $Faculty_impact is 0)[
+[[Pick a high impact journal-&gt;Pick a High Impact Journal]]
+   ]
+(else-if: $Faculty_impact_paywall_scholar + $Faculty_impact_oa is 0)[
+[[Continue looking for a way to publish in a high impact journal]]
+]
+(else-if: $Faculty_impact_paywall_scholar + $Faculty_impact_oa is 1)[
+[[Find another way to publish in a high impact journal]]
+]
+(else:)[
+Publish in a high impact journal (You&#39;ve already done this!)
+    ]
+&lt;br&gt;
+(if: $Faculty_mono is 0)[
+[[Publish your monograph-&gt;Publish a Monograph]]
+    ]
+    (else:)[
+Publish your monograph (You&#39;ve already done this!)
+    ]
+}</tw-passagedata><tw-passagedata pid="5" name="Publisher’s website" tags="" position="1125,275" size="100,100">{
 (set: $UnderGrad1D to 1)
 
 #Publisher’s site 
@@ -274,8 +309,8 @@ Your article was published and you’re getting great attention for your work. G
 [[Go back to start|Start]]
 
 }</tw-passagedata><tw-passagedata pid="19" name="Try to find the funds to pay" tags="" position="1075,850" size="100,100">{
-#Title
-You found $3,000 in departmental funds but you’d have to pay the rest out of pocket
+# Title
+You found `$3,000` in departmental funds but you’d have to pay the rest out of pocket
 
 * [[Ask your co-author to split costs]]
 * Go to find a new journal (Back to [[options|Grad Student]])
@@ -289,7 +324,168 @@ Don’t lose your Boba and cofee budget in the future: explore OA funding suppor
 &lt;br&gt;
 ([[Go back to top level options|Start]])
 
-}</tw-passagedata></tw-storydata>
+}</tw-passagedata><tw-passagedata pid="21" name="Pick a High Impact Journal" tags="" position="375,1075" size="100,100">{
+(set: $Faculty_impact to 1)
+# Pick a High Impact Journal
+Being a professor is hard! You need to get this article published. What do you do?
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_impact_paywall is 0)[
+[[Submit to the first journal you find and order Chinese takeout-&gt;Paywall]] 
+] (else:)[
+Submit to the first journal you find and order Chinese takeout (You already did this!)
+]
+&lt;br&gt;
+(if: $Faculty_impact_oa is 0)[
+[[Take 5 minutes to explore the library’s “Support for OA” webpage-&gt;Extra Citations]] 
+]
+}</tw-passagedata><tw-passagedata pid="22" name="Publish a Monograph" tags="" position="925,1000" size="100,100">{
+(set: $Faculty_mono to 1)
+# Publish a Monograph
+Your first monograph has been accepted by a great university press - Congratulations! The publisher says you can publish the monograph open access but you have to find $15,000 in funding. What do you do?
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_mono_self is 0)[
+[[Try to find `$15k` yourself-&gt;Pay for your own monograph]]
+]
+(else: )[
+Try to find `$15k` yourself (you already did this!)
+]
+&lt;br&gt;
+(if: $Faculty_mono_thai is 0)[
+[[You’d rather order from a new Thai place than think about all of that! You won’t make the monograph open access-&gt;Thai]]
+]
+(else:)[
+You’d rather order from a new Thai place than think about all of that! You won’t make the monograph open access.  (You already did this!)
+]
+&lt;br&gt;
+(if: $Faculty_mono_open is 0)[
+[[Research funding options at your university-&gt;Open Monograph Fund]]
+]
+(else:)[
+Research funding options at your university (You already did this!)
+]
+}</tw-passagedata><tw-passagedata pid="23" name="Paywall" tags="" position="600,1400" size="100,100">{
+(set: $Faculty_impact_paywall to 1)
+# Submit to the first journal you find
+The journal you picked ended up being closed access. Your article sits behind a paywall where less people can see and cite it. What do you do?
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_impact_paywall_pizza is 0)[
+[[Nothing - it’s pizza o’clock!-&gt;Pizza]]
+]
+(else:)[
+Nothing - it&#39;s pizza o&#39;clock! (You&#39;ve already done this!))
+]
+&lt;br&gt;
+(if: $Faculty_impact_paywall_scholar is 0)[
+[[Take 5 minutes to self-archive the article in CU Scholar-&gt;CU Scholar]]
+]
+(else:)[
+Take 5 minutes to self-archive the article in CU Scholar (You&#39;ve already done this!)
+]
+}</tw-passagedata><tw-passagedata pid="24" name="Tenure" tags="" position="825,1250" size="100,100">{
+# Apply for Tenure
+You feel confident going up for tenure because you made sure your work had the most impact and discoverability.
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_impact_oa is 0 or $Faculty_impact_paywall_scholar is 0)[
+[[Explore another path to publishing an impactful article-&gt;Pick a High Impact Journal]]
+&lt;br&gt;
+]
+[[Choose another topic to learn about-&gt;Start]]
+}</tw-passagedata><tw-passagedata pid="25" name="Extra Citations" tags="" position="675,1050" size="100,100">{
+(set: $Faculty_impact_oa to 1)
+# Explore the library’s “Support for OA” webpage
+
+You found a great journal with open access APCs fully supported by the library. 
+Your CV is looking great and your article got about 15% more citations than it would have if you had published in a closed access journal. 
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_mono is 0)[
+	[[Time to publish a monograph-&gt;Publish a Monograph]]
+    ]
+(else-if: $Faculty_mono_open_publish is 0)[
+[[Go back and figure out how to publish that monograph-&gt;Publish a Monograph]]
+]
+(else:) [
+[[Time to apply for tenure-&gt;Tenure]]
+]
+}</tw-passagedata><tw-passagedata pid="26" name="Pizza" tags="" position="625,1225" size="100,100">{
+(set: $Faculty_impact_paywall_pizza to 1)
+# Pizza O&#39; Clock
+It’s time for tenure review and your citation counts are low. Also, you spent all your takeout money on pizza and Chinese food. Oh no!
+&lt;br&gt;
+[[Learn what else you can try-&gt;Paywall]]
+}</tw-passagedata><tw-passagedata pid="27" name="CU Scholar" tags="" position="925,1475" size="100,100">{
+(set: $Faculty_impact_paywall_scholar to 1)
+# Self-archive in CU Scholar
+Your work being in CU Scholar brought a ton of new attention, and a few additional citations as well. 
+&lt;br&gt;
+CU Scholar is the university’s institutional repository, serving the research and teaching mission of CU Boulder. Did you know CU Scholar hosts and provides public access to over 4k scholarly articles, plus datasets, dissertations, and more?
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_mono is 0)[
+[[Time to publish a monograph-&gt;Publish a Monograph]]
+]
+(else-if: $Faculty_mono_open_publish is 0)[
+[[Go back and figure out how to publish that monograph-&gt;Publish a Monograph]]
+]
+(else:)
+[[It&#39;s time to apply for tenure!-&gt;Tenure]]
+}</tw-passagedata><tw-passagedata pid="28" name="Pay for your own monograph" tags="" position="1225,975" size="100,100">{
+(set: $Faculty_mono_self to 1)
+# Try to find `$15k` yourself
+You don’t have `$15k` lying around, silly - you’re an assistant professor!
+&lt;br&gt;
+&lt;br&gt;
+[[Back to options-&gt;Publish a Monograph]] </tw-passagedata><tw-passagedata pid="29" name="Thai" tags="" position="1225,1100" size="100,100">{
+(set: $Faculty_mono_thai to 1)
+Thai food is delicious  and your monograph does well, but you have a hard time getting metrics on its citation and use.
+&lt;br&gt;
+&lt;br&gt;
+[[Go back to options-&gt;Publish a Monograph]]
+}</tw-passagedata><tw-passagedata pid="30" name="Open Monograph Fund" tags="" position="1075,1200" size="100,100">{
+(set: $Faculty_mono_open to 1)
+# Research funding options at the university
+You do 5  minutes of research and find the Libraries have an Open Monograph Fund for up to `$15k` to make a monograph open access. What do you do?
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_mono_open_publish is 0)[
+[[Ask your editor to complete the application-&gt;Published Monograph]] 
+]
+(else:)[
+Ask your editor to complete the application (You already did this!)
+]
+&lt;br&gt;
+(if: $Faculty_mono_open_ethiopian is 0)[
+[[Whoops you forgot because you were ordering Ethiopian food!-&gt;Ethiopian]]
+]
+(else:)[
+Whoops you forgot because you were ordering Ethiopian food! (You already did this!)
+]
+}</tw-passagedata><tw-passagedata pid="31" name="Ethiopian" tags="" position="1275,1275" size="100,100">{
+(set: $Faculty_mono_open_ethiopian to 1)
+# Order Ethiopian
+Oh no, you spent all your takeout budget again! 
+&lt;br&gt;
+&lt;br&gt;
+[[Go back and ask the editor-&gt;Open Monograph Fund]]</tw-passagedata><tw-passagedata pid="32" name="Published Monograph" tags="" position="1100,1350" size="100,100">{
+(set: $Faculty_mono_open_publish to 1)
+# Apply for the Open Monograph Fund
+Your application is accepted and you publish your monograph open access at no cost to you.  Your monograph finds attention and impact both within and outside of the university because it was discoverable and accessible.
+&lt;br&gt;
+&lt;br&gt;
+(if: $Faculty_impact_paywall_scholar is 1 or $Faculty_impact_oa is 1)[
+[[It&#39;s time to apply for tenure!-&gt;Tenure]]
+]
+(else-if: $Faculty_impact is 0)[
+[[Time to publish in a high impact journal-&gt;Pick a High Impact Journal]]
+]
+(else:)[
+[[Go back and figure out how to publish in a high impact journal-&gt;Pick a High Impact Journal]]
+]
+}</tw-passagedata><tw-passagedata pid="33" name="Continue looking for a way to publish in a high impact journal" tags="" position="250,1000" size="100,100"></tw-passagedata><tw-passagedata pid="34" name="Find another way to publish in a high impact journal" tags="" position="500,1000" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

@@ -47,30 +47,6 @@ tw-icon[alt] {
   tw-icon:hover {
     color: #ae5a39;
   }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="250,200" size="100,100">{
-(set: $UnderGrad1A to 0)
-(set: $UnderGrad1B to 0)
-(set: $UnderGrad1C to 0)
-(set: $UnderGrad1D to 0)
-(Set: $UnderGrad2A to 0)
-(Set: $UnderGrad2B to 0)
-(Set: $UnderGrad2C to 0)
-(Set: $UnderGrad2D to 0)
-(set: $GoogSchol to 0)
-(set: $articles to 0)
-(set: $Grad1A to 0)
-(set: $Grad1B to 0)
-(set: $Grad1C to 0)
-(set: $Faculty_impact to 0)
-(set: $Faculty_impact_oa to 0)
-(set: $Faculty_impact_paywall to 0)
-(set: $Faculty_impact_paywall_scholar to 0)
-(set: $Faculty_mono to 0)
-(set: $Faculty_mono_self to 0)
-(set: $Faculty_mono_thai to 0)
-(set: $Faculty_mono_open to 0)
-(set: $Faculty_mono_open_ethiopian to 0)
-(set: $Faculty_mono_open_publish to 0)
-
 &lt;img src=&quot;OA-Logo.jpeg&quot;&gt;
 &lt;br&gt;
 Try to navigate academic life without spending your takeout food budget!
@@ -112,9 +88,11 @@ You’re an undergraduate student and you’re writing a paper that’s due tomo
     &lt;i&gt;[[Libraries OneSearch]]&lt;/i&gt; &lt;b&gt;(You&#39;ve already done this!)&lt;/b&gt;
     ]
 &lt;br&gt;
-(if: $GoogSchol is &lt;2)[
+(if: $GoogSchol is &lt;1)[
 	[[Google Scholar]]
     ]
+    (else-if: $GoogSchol is 1)[
+	[[Google Scholar]] &lt;i&gt;(You&#39;ve started this path, but you haven&#39;t explored everything.)&lt;/i&gt;]
     (else:)[
     &lt;i&gt;[[Google Scholar]]&lt;/i&gt; &lt;b&gt;(You&#39;ve already done this!)&lt;/b&gt;
     ]
@@ -127,12 +105,18 @@ You’re an undergraduate student and you’re writing a paper that’s due tomo
 	]
 
 &lt;br&gt;
+&lt;br&gt;
+(if: $articles is 3)[
+	You’ve got all the articles you need! [[Submit your paper.|Success1]]
+]
+(else:)[
 So far you&#39;ve found $articles of the articles you need for your project.
+    ]
 
 }</tw-passagedata><tw-passagedata pid="3" name="Grad Student" tags="" position="575,550" size="100,100">{
 #Grad  Scenario
 
-&lt;a href=&quot;https://pixabay.com/vectors/journal-magazin-reading-news-159879/ &quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-01.png&quot; width=&quot;720&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://pixabay.com/vectors/journal-magazin-reading-news-159879/ &quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-01.png&quot;&gt;&lt;/a&gt;
 &lt;br&gt;
 Congratulations! You just got done writing your first scholarly article! Now you must decide which journal to submit to. You want to make sure the journal is trustworthy but will have a lot of visibility and reach. Which journal will you choose?
 
@@ -199,10 +183,12 @@ Did you know that universities don’t automatically have access to research out
 }</tw-passagedata><tw-passagedata pid="6" name="Google Scholar" tags="" position="1150,150" size="100,100">{
 
 #Google Scholar
-&lt;b&gt;&lt;i&gt;(text-color:&quot;#A2A4A3&quot;)[Google Scholar is an interdisciplinary academic search engine.]&lt;/i&gt;&lt;/b&gt;
+&lt;img src=&quot;UnderGrad-01.png&quot; width=&quot;720&quot;&gt;
+&lt;br&gt;
+&lt;b&gt;&lt;i&gt;(text-color:&quot;#A2A4A3&quot;)[&lt;a href=&quot;https://scholar.google.com/&quot; target=&quot;_blank&quot;&gt;Google Scholar&lt;/a&gt; is an interdisciplinary academic search engine.]&lt;/i&gt;&lt;/b&gt;
 &lt;/p&gt;
 &lt;br&gt;
-You search Google Scholar and find another article that provides a different point of view on your argument.  (screenshot on VPN of option to get article via ILL).
+You search Google Scholar and find another article that provides a different point of view on your argument. 
 &lt;br&gt;
 Unfortunately, the library doesn’t have access to the article. You can request it through Inter-Library Loan (ILL) and get it within a few hours. You also remember a friend mentioning a plugin called Unpaywall which points to open access versions of articles behind a paywall.
 &lt;br&gt;
@@ -241,21 +227,16 @@ You conduct a quick keyword search on Libraries OneSearch and find a journal art
 &lt;br&gt;Did you know? The Libraries subscription to Springer Nature costs more than a &lt;a href=&quot;https://en.wikipedia.org/wiki/Porsche_918_Spyder&quot; target=&quot;_blank&quot;&gt;Porsche 918 Spyder&lt;/a&gt; every year?
 
 &lt;br&gt;
-(if: $articles is 3)[
-	[[You’ve got all the articles you need!|Success1]]
-]
-(else:)[
 	[[(Back to search options)|Undergrad Student]]
-    ]
 &lt;br&gt;
 &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Porsche_918_Spyder_Blue.jpg&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;spyder.jpg&quot; width=&quot;720&quot;&gt;&lt;/a&gt;
 
 }
-</tw-passagedata><tw-passagedata pid="8" name="Success1" tags="" position="1575,275" size="100,100">{
+</tw-passagedata><tw-passagedata pid="8" name="Success1" tags="" position="1550,200" size="100,100">{
 #Success!
 &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Alma_Mater_Europaea_university_graduation_ceremony._Maribor,_Slovenia,_12_March_2013.png&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;success.png&quot; width=&quot;720&quot;&gt;&lt;/a&gt;
 &lt;br&gt;
-You’ve got all the articles you need! You finish your essay and manage to get it in by the deadline.
+You successfully gathered all the articles you needed! You finish your essay and manage to get it in by the deadline.
 &lt;br&gt;
 [[Go back and explore another topic?|Start]]
 
@@ -273,18 +254,13 @@ You’ve got all the articles you need! You finish your essay and manage to get 
 
 &lt;img src=&quot;ILL.png&quot; width=&quot;720&quot;&gt;
 &lt;br&gt;
-ILL is a free document delivery service offered to CU Boulder affiliates. Most requests for digital articles can be filled within a few hours.
+&lt;b&gt;&lt;i&gt;(text-color:&quot;#A2A4A3&quot;)[&lt;a href=&quot;https://libraries.colorado.edu/services/borrowing-other-libraries/interlibrary-loan&quot; target=&quot;_blank&quot;&gt;Inter-Library Loan (ILL)&lt;/a&gt; is a free document delivery service offered to CU Boulder affiliates. Most requests for digital articles can be filled within a few hours].&lt;/b&gt;&lt;/i&gt;
 &lt;br&gt;
 You eat some Thai, get a few hours of sleep, and wake in the morning to the article in your inbox. You get it cited and are almost ready to turn in your paper. 
 &lt;br&gt;
 Did you know last year CU Libraries filled nearly 13k ILL requests for articles and books!
 &lt;br&gt;
-(if: $articles is 3)[
-	[[You’ve got all the articles you need!|Success1]]
-]
-(else:)[
 	[[(Back to search options)|Undergrad Student]]
-    ]
 
 
 
@@ -306,12 +282,7 @@ You install the extension for &lt;a href=&quot;https://unpaywall.org/products/ex
 It turns out the author of the article you needed posted a version on an insitutional repository. You cite the article in your paper, which you are almost ready to turn in, and you still have some time left to pop a pizza in the oven!
 
 &lt;br&gt;
-(if: $articles is 3)[
-	[[You’ve got all the articles you need!|Success1]]
-]
-(else:)[
 	[[(Back to search options)|Undergrad Student]]
-    ]
 
 
 
@@ -332,15 +303,15 @@ This is a great, high impact journal, but you found out the acceptance rate is v
 &lt;br&gt;
 Options:
 
-* [[Submit your article to this journal anyways]]
+* [[Submit your article to this journal anyway]]
 * Go back to [[options|Grad Student]].
 
 }</tw-passagedata><tw-passagedata pid="13" name="Open access journal a librarian helped you find" tags="" position="950,675" size="100,100">{
 (set: $Grad1B to 1)
 #Title
-&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:DOAJ_logo-black-whitespace.svg&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-03.png&quot; width=&quot;720&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:DOAJ_logo-black-whitespace.svg&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-03.png&quot;&gt;&lt;/a&gt;
 &lt;br&gt;
-Your librarian helped you explore open access options in your field though the Directory of Open Access Journals, a database of over 20k quality OA journals in every field (doaj.org) You found a trustworthy journal widely read it your field.
+Your librarian helped you explore open access options in your field though the &lt;a href=&quot;https://doaj.org/&quot; target=&quot;_blank&quot;&gt;Directory of Open Access Journals&lt;/a&gt; (DOAJ), a database of over 20k quality OA journals in every field. Before too long, you found a trustworthy journal widely read in your field.
 
 * [[Publish here]]
 * Go back and pick a different journal (back to [[options|Grad Student]])
@@ -348,7 +319,7 @@ Your librarian helped you explore open access options in your field though the D
 
 }</tw-passagedata><tw-passagedata pid="14" name="Journal a co-author at another institution likes" tags="" position="900,850" size="100,100">{
 (set: $Grad1C to 1)
-#Prestigeous Journal
+#Prestigious Journal
 &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Nature_logo_2019.jpg&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-04.jpg&quot; width=&quot;720&quot;&gt;&lt;/a&gt;
 &lt;br&gt;
 Your co-author recommended an open access journal but it has a $6,000 article processing charge (APC)-what do you do?
@@ -356,26 +327,22 @@ Your co-author recommended an open access journal but it has a $6,000 article pr
 * [[Try to find the funds to pay]]
 * Go back to [[options|Grad Student]]
 
-Did you know some journals charge APCs for open access? The average APC is more than $2,000, and prestigious publishers like Nature charge up to $12,000 per article! Recent estimatessuggest CU Boulder authors may spend up to $6 million per year on APC costs! (link to State of Open report)
+Did you know some journals charge APCs for open access? The average APC is more than $2,000, and prestigious publishers like Nature charge up to $12,000 per article! Recent estimates suggest CU Boulder authors &lt;a href=&quot;https://scholar.colorado.edu/concern/reports/xs55mf200&quot; target=&quot;_blank&quot;&gt;may spend up to $6 million per year on APC costs&lt;/a&gt;! 
 
-}</tw-passagedata><tw-passagedata pid="15" name="Submit your article to this journal anyways" tags="" position="1100,525" size="100,100">{
-Oh no, your article gets rejected! You’ll need to submit to a different journal.
-
-* (Go back to [[options|Grad Student]])
-}</tw-passagedata><tw-passagedata pid="16" name="Publish here" tags="" position="1100,675" size="100,100">{
-Great news! The journal you found is Diamond open access, meaning it charges no fees to be openly available to everyone! Your article is widely read and you have enough money left over to order takeout sushi this weekend! 
+}</tw-passagedata><tw-passagedata pid="15" name="Publish here" tags="" position="1100,675" size="100,100">{
+Great news! The journal you found is Diamond open access, meaning it charges no fees to make articles openly available to everyone! Your article is widely read and you have enough money left over to order takeout sushi this weekend! 
 &lt;br&gt;
 [[Ending]]
 
 }
 
-</tw-passagedata><tw-passagedata pid="17" name="Ending" tags="" position="1300,650" size="100,100">{
+</tw-passagedata><tw-passagedata pid="16" name="Ending" tags="" position="1300,650" size="100,100">{
 #Success!
 Your article was published and you’re getting great attention for your work. Go back and explore another topic?
 &lt;br&gt;
 [[Go back to start|Start]]
 
-}</tw-passagedata><tw-passagedata pid="18" name="Try to find the funds to pay" tags="" position="1075,850" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="17" name="Try to find the funds to pay" tags="" position="1075,850" size="100,100">{
 # Pricey
 You found $3,000 in departmental funds but you’d have to pay the rest out of pocket
 
@@ -383,7 +350,7 @@ You found $3,000 in departmental funds but you’d have to pay the rest out of p
 * Go to find a new journal (Back to [[options|Grad Student]])
 
 
-}</tw-passagedata><tw-passagedata pid="19" name="Ask your co-author to split costs" tags="" position="1275,850" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="18" name="Ask your co-author to split costs" tags="" position="1275,850" size="100,100">{
 #Success, but at what cost?
 You and your co-author each pay $1,500 out of pocket to publish the article Open Access. Oh, no, you’ve lost your takeout budget!
 &lt;br&gt;
@@ -394,7 +361,7 @@ Don’t lose your boba and coffee budget in the future: explore OA funding suppo
 &lt;img src=&quot;grad-05.png&quot; width=&quot;720&quot;&gt;
 
 
-}</tw-passagedata><tw-passagedata pid="20" name="Pick a High Impact Journal" tags="" position="375,1075" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="19" name="Pick a High Impact Journal" tags="" position="375,1075" size="100,100">{
 (set: $Faculty_impact to 1)
 # Pick a High Impact Journal
 Being a professor is hard! You need to get this article published. What do you do?
@@ -409,7 +376,7 @@ Submit to the first journal you find and order Chinese takeout (You already did 
 (if: $Faculty_impact_oa is 0)[
 [[Take 5 minutes to explore the library’s “Support for OA” webpage-&gt;Extra Citations]] 
 ]
-}</tw-passagedata><tw-passagedata pid="21" name="Publish a Monograph" tags="" position="925,1000" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="20" name="Publish a Monograph" tags="" position="925,1000" size="100,100">{
 (set: $Faculty_mono to 1)
 # Publish a Monograph
 Your first monograph has been accepted by a great university press - Congratulations! The publisher says you can publish the monograph open access but you have to find $15,000 in funding. What do you do?
@@ -435,7 +402,7 @@ You’d rather order from a new Thai place than think about all of that! You won
 (else:)[
 Research funding options at your university (You already did this!)
 ]
-}</tw-passagedata><tw-passagedata pid="22" name="Paywall" tags="" position="600,1400" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="21" name="Paywall" tags="" position="600,1400" size="100,100">{
 (set: $Faculty_impact_paywall to 1)
 # Submit to the first journal you find
 The journal you picked ended up being closed access. Your article sits behind a paywall where less people can see and cite it. What do you do?
@@ -454,7 +421,7 @@ Nothing - it&#39;s pizza o&#39;clock! (You&#39;ve already done this!))
 (else:)[
 Take 5 minutes to self-archive the article in CU Scholar (You&#39;ve already done this!)
 ]
-}</tw-passagedata><tw-passagedata pid="23" name="Tenure" tags="" position="800,1200" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="22" name="Tenure" tags="" position="800,1200" size="100,100">{
 # Apply for Tenure
 You feel confident going up for tenure because you made sure your work had the most impact and discoverability.
 &lt;br&gt;
@@ -464,7 +431,7 @@ You feel confident going up for tenure because you made sure your work had the m
 &lt;br&gt;
 ]
 [[Choose another topic to learn about-&gt;Start]]
-}</tw-passagedata><tw-passagedata pid="24" name="Extra Citations" tags="" position="675,1025" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="23" name="Extra Citations" tags="" position="675,1025" size="100,100">{
 (set: $Faculty_impact_oa to 1)
 # Explore the library’s “Support for OA” webpage
 
@@ -481,13 +448,13 @@ Your CV is looking great and your article got about 15% more citations than it w
 (else:) [
 [[Time to apply for tenure-&gt;Tenure]]
 ]
-}</tw-passagedata><tw-passagedata pid="25" name="Pizza" tags="" position="625,1225" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="24" name="Pizza" tags="" position="625,1225" size="100,100">{
 (set: $Faculty_impact_paywall_pizza to 1)
 # Pizza O&#39; Clock
 It’s time for tenure review and your citation counts are low. Also, you spent all your takeout money on pizza and Chinese food. Oh no!
 &lt;br&gt;
 [[Learn what else you can try-&gt;Paywall]]
-}</tw-passagedata><tw-passagedata pid="26" name="CU Scholar" tags="" position="925,1475" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="25" name="CU Scholar" tags="" position="925,1475" size="100,100">{
 (set: $Faculty_impact_paywall_scholar to 1)
 # Self-archive in CU Scholar
 Your work being in CU Scholar brought a ton of new attention, and a few additional citations as well. 
@@ -503,20 +470,20 @@ CU Scholar is the university’s institutional repository, serving the research 
 ]
 (else:)
 [[It&#39;s time to apply for tenure!-&gt;Tenure]]
-}</tw-passagedata><tw-passagedata pid="27" name="Pay for your own monograph" tags="" position="1225,975" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="26" name="Pay for your own monograph" tags="" position="1225,975" size="100,100">{
 (set: $Faculty_mono_self to 1)
 # Try to find `$15k` yourself
 You don’t have `$15k` lying around, silly - you’re an assistant professor!
 &lt;br&gt;
 &lt;br&gt;
 [[Back to options-&gt;Publish a Monograph]] 
-}</tw-passagedata><tw-passagedata pid="28" name="Thai" tags="" position="1225,1100" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="27" name="Thai" tags="" position="1225,1100" size="100,100">{
 (set: $Faculty_mono_thai to 1)
 Thai food is delicious  and your monograph does well, but you have a hard time getting metrics on its citation and use.
 &lt;br&gt;
 &lt;br&gt;
 [[Go back to options-&gt;Publish a Monograph]]
-}</tw-passagedata><tw-passagedata pid="29" name="Open Monograph Fund" tags="" position="1075,1200" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="28" name="Open Monograph Fund" tags="" position="1075,1200" size="100,100">{
 (set: $Faculty_mono_open to 1)
 # Research funding options at the university
 You do 5  minutes of research and find the Libraries have an Open Monograph Fund for up to `$15k` to make a monograph open access. What do you do?
@@ -535,14 +502,14 @@ Ask your editor to complete the application (You already did this!)
 (else:)[
 Whoops you forgot because you were ordering Ethiopian food! (You already did this!)
 ]
-}</tw-passagedata><tw-passagedata pid="30" name="Ethiopian" tags="" position="1275,1275" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="29" name="Ethiopian" tags="" position="1275,1275" size="100,100">{
 (set: $Faculty_mono_open_ethiopian to 1)
 # Order Ethiopian
 Oh no, you spent all your takeout budget again! 
 &lt;br&gt;
 &lt;br&gt;
 [[Go back and ask the editor-&gt;Open Monograph Fund]]
-}</tw-passagedata><tw-passagedata pid="31" name="Published Monograph" tags="" position="1100,1350" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="30" name="Published Monograph" tags="" position="1100,1350" size="100,100">{
 (set: $Faculty_mono_open_publish to 1)
 # Apply for the Open Monograph Fund
 Your application is accepted and you publish your monograph open access at no cost to you.  Your monograph finds attention and impact both within and outside of the university because it was discoverable and accessible.
@@ -557,7 +524,7 @@ Your application is accepted and you publish your monograph open access at no co
 (else:)[
 [[Go back and figure out how to publish in a high impact journal-&gt;Pick a High Impact Journal]]
 ]
-}</tw-passagedata><tw-passagedata pid="32" name="Continue looking for a way to publish in a high impact journal" tags="" position="200,950" size="100,100"></tw-passagedata><tw-passagedata pid="33" name="Find another way to publish in a high impact journal" tags="" position="575,925" size="100,100"></tw-passagedata><tw-passagedata pid="34" name="CU Scholar, our institutional repository" tags="" position="1450,450" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="31" name="Continue looking for a way to publish in a high impact journal" tags="" position="200,950" size="100,100"></tw-passagedata><tw-passagedata pid="32" name="Find another way to publish in a high impact journal" tags="" position="575,925" size="100,100"></tw-passagedata><tw-passagedata pid="33" name="CU Scholar, our institutional repository" tags="" position="1450,450" size="100,100">{
 (set: $UnderGrad1D to 1)
 
 (if: $UnderGrad2D is 0)[
@@ -569,19 +536,45 @@ Your application is accepted and you publish your monograph open access at no co
 
 #CU Scholar
 &lt;img src=&quot;CU-Scholar.png&quot; width=&quot;720&quot;&gt;
+&lt;br&gt;
+&lt;i&gt;&lt;b&gt;(text-color:&quot;#A2A4A3&quot;)[ &lt;a href=&quot;https://scholar.colorado.edu/&quot; target=&quot;_blank&quot;&gt;CU Scholar&lt;/a&gt; is the University’s institutional repository, serving the research and teaching mission of CU Boulder. Did you know that CU Scholar hosts and provides public access to over 4000 scholarly articles, plus datasets, dissertations, and more? As of September 2025, CU Scholar hosts nearly 20k Open Access items with nearly 36k downloads in 2024 alone!]&lt;/b&gt;&lt;/i&gt;
+&lt;br&gt;
+Thankfully, your professor deposited a copy of the article into CU Scholar and you were able to use it for your essay!
+
 
 &lt;br&gt;
-Your professor deposited a copy of the article into &lt;a href=&quot;https://scholar.colorado.edu/&quot; target=&quot;_blank&quot;&gt;CU Scholar&lt;/a&gt;!
-&lt;br&gt;
-(if: $articles is 3)[
-	[[You’ve got all the articles you need!|Success1]]
-]
-(else:)[
 	[[(Back to search options)|Undergrad Student]]
-    ]
 
 }
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="34" name="startup" tags="startup" position="275,50" size="100,100">{
+(set: $UnderGrad1A to 0)
+(set: $UnderGrad1B to 0)
+(set: $UnderGrad1C to 0)
+(set: $UnderGrad1D to 0)
+(Set: $UnderGrad2A to 0)
+(Set: $UnderGrad2B to 0)
+(Set: $UnderGrad2C to 0)
+(Set: $UnderGrad2D to 0)
+(set: $GoogSchol to 0)
+(set: $articles to 0)
+(set: $Grad1A to 0)
+(set: $Grad1B to 0)
+(set: $Grad1C to 0)
+(set: $Faculty_impact to 0)
+(set: $Faculty_impact_oa to 0)
+(set: $Faculty_impact_paywall to 0)
+(set: $Faculty_impact_paywall_scholar to 0)
+(set: $Faculty_mono to 0)
+(set: $Faculty_mono_self to 0)
+(set: $Faculty_mono_thai to 0)
+(set: $Faculty_mono_open to 0)
+(set: $Faculty_mono_open_ethiopian to 0)
+(set: $Faculty_mono_open_publish to 0)
+}</tw-passagedata><tw-passagedata pid="35" name="Submit your article to this journal anyway" tags="" position="1050,525" size="100,100">{
+Oh no, your article gets rejected! You’ll need to submit to a different journal.
+
+* (Go back to [[options|Grad Student]])
+}</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim

@@ -68,7 +68,29 @@ tw-passage {
   tw-passage {
     font-size: 18px
   }
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="250,200" size="100,100">{
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// Google Analytics 4 Setup
+(function() {
+  // Load GA4 script
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-1SLVJMEE4E';
+  document.head.appendChild(script);
+  
+  // Initialize GA4
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1SLVJMEE4E');
+  
+  // Track each passage view as a page view
+  $(document).on(':passagerender', function (ev) {
+    var passageName = passage();
+    gtag('event', 'page_view', {
+      'page_title': passageName,
+      'page_path': '/passage/' + passageName
+    });
+  });
+})();</script><tw-passagedata pid="1" name="Start" tags="" position="250,200" size="100,100">{
 &lt;img src=&quot;OA-Logo.jpeg&quot;&gt;
 &lt;br&gt;
 Try to navigate academic life without spending your takeout food budget!
@@ -79,9 +101,36 @@ Learn about:
 * Impact and scholarly monographs
 
 Choose your character:
-* [[Undergrad Student]]
-* [[Grad Student]]
-* [[Faculty Member]]
+&lt;br&gt;
+(if: $articles is 0)[
+	[[Undergrad Student]]
+   ]
+    (else-if: $UnderGradComplete is 0)[ 
+    &lt;i&gt;[[Undergrad Student]]&lt;/i&gt; &lt;b&gt;(You&#39;ve started, but there&#39;s more to do!!)&lt;/b&gt;
+    ]
+    (else:)[
+    &lt;i&gt;[[Undergrad Student]]&lt;/i&gt; &lt;b&gt;(You&#39;ve done this already!)
+]
+&lt;br&gt;
+(if: $GradStarted is 0)[
+	[[Grad Student]]
+    ]
+    (else-if: $GradComplete is 0)[
+   &lt;i&gt;[[Grad Student]]&lt;/i&gt; &lt;b&gt;(You&#39;ve started, but there&#39;s more to do!!)&lt;/b&gt;
+    ]
+    (else:)[
+    &lt;i&gt;[[Grad Student]]&lt;/i&gt; &lt;b&gt;(You&#39;ve done this already!)
+]
+&lt;br&gt;
+(if: $FacultyStarted is 0)[
+	[[Faculty Member]]
+    ]
+    (else-if: $FacultyComplete is 0)[
+   &lt;i&gt;[[Faculty Member]]&lt;/i&gt; &lt;b&gt;(You&#39;ve started, but there&#39;s more to do!!)&lt;/b&gt;
+    ]
+    (else:)[
+    &lt;i&gt;[[Faculty Member]]&lt;/i&gt; &lt;b&gt;(You&#39;ve done this already!)
+]
 
 &lt;br&gt;&lt;br&gt;
 #Guide
@@ -128,14 +177,16 @@ You’re an undergraduate student and you’re writing a paper that’s due tomo
 
 &lt;br&gt;
 &lt;br&gt;
-(if: $articles is 3)[
+(if: $articles &gt;= 3)[
 	You’ve got all the articles you need! [[Submit your paper.|Success1]]
 ]
 (else:)[
 So far you&#39;ve found $articles of the articles you need for your project.
     ]
-
+&lt;br&gt;&lt;br&gt;
+[[Choose a different character-&gt;Start]]
 }</tw-passagedata><tw-passagedata pid="3" name="Grad Student" tags="" position="575,550" size="100,100">{
+(set: $GradStarted to 1)
 #Grad  Scenario
 
 &lt;a href=&quot;https://pixabay.com/vectors/journal-magazin-reading-news-159879/ &quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-01.png&quot;&gt;&lt;/a&gt;
@@ -160,9 +211,11 @@ Congratulations! You just got done writing your first scholarly article! Now you
     (else:)[
 * Option 3: &lt;i&gt;[[Journal a co-author at another institution likes]]&lt;/i&gt; &lt;b&gt;(You&#39;ve already done this!)&lt;/b&gt;
     ]
-
+&lt;br&gt;&lt;br&gt;
+[[Choose a different character-&gt;Start]]
 
 }</tw-passagedata><tw-passagedata pid="4" name="Faculty Member" tags="" position="375,875" size="100,100">{
+(set: $FacultyStarted to 1)
 # Faculty Member
 You’re finally an assistant professor. You can do this the rest of your life... as long as you get tenure!  To do that, you need to make sure you publish a few high impact articles as well as a monograph. Which will you worry about first?
 
@@ -173,13 +226,13 @@ You’re finally an assistant professor. You can do this the rest of your life..
 [[Pick a high impact journal-&gt;Pick a High Impact Journal]]
    ]
 (else-if: $Faculty_impact_paywall_scholar + $Faculty_impact_oa is 0)[
-[[Continue looking for a way to publish in a high impact journal]]
+[[Continue looking for a way to publish in a high impact journal-&gt;Pick a High Impact Journal]]
 ]
 (else-if: $Faculty_impact_paywall_scholar + $Faculty_impact_oa is 1)[
-[[Find another way to publish in a high impact journal]]
+[[Find another way to publish in a high impact journal-&gt;Pick a High Impact Journal]]
 ]
 (else:)[
-Publish in a high impact journal (You&#39;ve already done this!)
+[[Publish in a high impact journal (You&#39;ve already done this!)-&gt;Pick a High Impact Journal]]
     ]
 &lt;br&gt;
 (if: $Faculty_mono is 0)[
@@ -188,6 +241,8 @@ Publish in a high impact journal (You&#39;ve already done this!)
     (else:)[
 Publish your monograph (You&#39;ve already done this!)
     ]
+&lt;br&gt;&lt;br&gt;
+[[Choose a different character-&gt;Start]]
 }</tw-passagedata><tw-passagedata pid="5" name="Publisher’s website" tags="" position="1125,350" size="100,100">{
 (set: $UnderGrad1D to 1)
 
@@ -255,6 +310,7 @@ You conduct a quick keyword search on Libraries OneSearch and find a journal art
 
 }
 </tw-passagedata><tw-passagedata pid="8" name="Success1" tags="" position="1550,200" size="100,100">{
+(set: $UnderGradComplete to 1)
 #Success!
 &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Alma_Mater_Europaea_university_graduation_ceremony._Maribor,_Slovenia,_12_March_2013.png&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;success.png&quot; &gt;&lt;/a&gt;
 &lt;br&gt;
@@ -329,8 +385,7 @@ Options:
 * Go back to [[options|Grad Student]].
 
 }</tw-passagedata><tw-passagedata pid="13" name="Open access journal a librarian helped you find" tags="" position="950,675" size="100,100">{
-(set: $Grad1B to 1)
-#Title
+# Option 2: Librarian&#39;s Journal
 &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:DOAJ_logo-black-whitespace.svg&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-03.png&quot;&gt;&lt;/a&gt;
 &lt;br&gt;
 Your librarian helped you explore open access options in your field though the &lt;a href=&quot;https://doaj.org/&quot; target=&quot;_blank&quot;&gt;Directory of Open Access Journals&lt;/a&gt; (DOAJ), a database of over 20k quality OA journals in every field. Before too long, you found a trustworthy journal widely read in your field.
@@ -341,7 +396,7 @@ Your librarian helped you explore open access options in your field though the &
 
 }</tw-passagedata><tw-passagedata pid="14" name="Journal a co-author at another institution likes" tags="" position="900,850" size="100,100">{
 (set: $Grad1C to 1)
-#Prestigious Journal
+#Option 3: Co-author&#39;s journal
 &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Nature_logo_2019.jpg&quot;  target=&quot;_blank&quot;&gt;&lt;img src=&quot;grad-04.jpg&quot; &gt;&lt;/a&gt;
 &lt;br&gt;
 Your co-author recommended an open access journal but it has a $6,000 article processing charge (APC)-what do you do?
@@ -352,6 +407,7 @@ Your co-author recommended an open access journal but it has a $6,000 article pr
 Did you know some journals charge APCs for open access? The average APC is more than $2,000, and prestigious publishers like Nature charge up to $12,000 per article! Recent estimates suggest CU Boulder authors &lt;a href=&quot;https://scholar.colorado.edu/concern/reports/xs55mf200&quot; target=&quot;_blank&quot;&gt;may spend up to $6 million per year on APC costs&lt;/a&gt;! 
 
 }</tw-passagedata><tw-passagedata pid="15" name="Publish here" tags="" position="1100,675" size="100,100">{
+(set: $Grad1B to 1)
 Great news! The journal you found is Diamond open access, meaning it charges no fees to make articles openly available to everyone! Your article is widely read and you have enough money left over to order takeout sushi this weekend! 
 &lt;br&gt;
 [[Ending]]
@@ -359,6 +415,7 @@ Great news! The journal you found is Diamond open access, meaning it charges no 
 }
 
 </tw-passagedata><tw-passagedata pid="16" name="Ending" tags="" position="1300,650" size="100,100">{
+(set: $GradComplete to 1)
 #Success!
 Your article was published and you’re getting great attention for your work. Go back and explore another topic?
 &lt;br&gt;
@@ -396,8 +453,10 @@ Submit to the first journal you find and order Chinese takeout (You already did 
 ]
 &lt;br&gt;
 (if: $Faculty_impact_oa is 0)[
-[[Take 5 minutes to explore the library’s “Support for OA” webpage-&gt;Extra Citations]] 
+[[Take 5 minutes to explore the library’s “Support for Open Access” webpage-&gt;Extra Citations]] 
 ]
+&lt;br&gt;&lt;br&gt;
+[[Choose a different character-&gt;Start]]
 }</tw-passagedata><tw-passagedata pid="20" name="Publish a Monograph" tags="" position="925,1000" size="100,100">{
 (set: $Faculty_mono to 1)
 # Publish a Monograph
@@ -424,6 +483,7 @@ You’d rather order from a new Thai place than think about all of that! You won
 (else:)[
 Research funding options at your university (You already did this!)
 ]
+[[Choose a different character-&gt;Start]]
 }</tw-passagedata><tw-passagedata pid="21" name="Paywall" tags="" position="600,1400" size="100,100">{
 (set: $Faculty_impact_paywall to 1)
 # Submit to the first journal you find
@@ -444,6 +504,7 @@ Nothing - it&#39;s pizza o&#39;clock! (You&#39;ve already done this!))
 Take 5 minutes to self-archive the article in CU Scholar (You&#39;ve already done this!)
 ]
 }</tw-passagedata><tw-passagedata pid="22" name="Tenure" tags="" position="800,1200" size="100,100">{
+(set: $FacultyComplete to 1)
 # Apply for Tenure
 You feel confident going up for tenure because you made sure your work had the most impact and discoverability.
 &lt;br&gt;
@@ -479,6 +540,7 @@ It’s time for tenure review and your citation counts are low. Also, you spent 
 }</tw-passagedata><tw-passagedata pid="25" name="CU Scholar" tags="" position="925,1475" size="100,100">{
 (set: $Faculty_impact_paywall_scholar to 1)
 # Self-archive in CU Scholar
+&lt;img src=&quot;CU-Scholar.png&quot;&gt;
 Your work being in CU Scholar brought a ton of new attention, and a few additional citations as well. 
 &lt;br&gt;
 CU Scholar is the university’s institutional repository, serving the research and teaching mission of CU Boulder. Did you know CU Scholar hosts and provides public access to over 4k scholarly articles, plus datasets, dissertations, and more?
@@ -508,7 +570,7 @@ Thai food is delicious  and your monograph does well, but you have a hard time g
 }</tw-passagedata><tw-passagedata pid="28" name="Open Monograph Fund" tags="" position="1075,1200" size="100,100">{
 (set: $Faculty_mono_open to 1)
 # Research funding options at the university
-You do 5  minutes of research and find the Libraries have an Open Monograph Fund for up to `$15k` to make a monograph open access. What do you do?
+You do 5  minutes of research and find the Libraries have an &lt;a href=&quot;https://libraries.colorado.edu/research/open-access/cub-open-monograph-fund&quot; target=&quot;_blank&quot;&gt;Open Monograph Fund&lt;/a&gt;  for up to `$15k` to make a monograph open access. What do you do?
 &lt;br&gt;
 &lt;br&gt;
 (if: $Faculty_mono_open_publish is 0)[
@@ -546,7 +608,7 @@ Your application is accepted and you publish your monograph open access at no co
 (else:)[
 [[Go back and figure out how to publish in a high impact journal-&gt;Pick a High Impact Journal]]
 ]
-}</tw-passagedata><tw-passagedata pid="31" name="Continue looking for a way to publish in a high impact journal" tags="" position="200,950" size="100,100"></tw-passagedata><tw-passagedata pid="32" name="Find another way to publish in a high impact journal" tags="" position="575,925" size="100,100"></tw-passagedata><tw-passagedata pid="33" name="CU Scholar, our institutional repository" tags="" position="1450,450" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="31" name="CU Scholar, our institutional repository" tags="" position="1450,450" size="100,100">{
 (set: $UnderGrad1D to 1)
 
 (if: $UnderGrad2D is 0)[
@@ -568,7 +630,7 @@ Thankfully, your professor deposited a copy of the article into CU Scholar and y
 	[[(Back to search options)|Undergrad Student]]
 
 }
-</tw-passagedata><tw-passagedata pid="34" name="startup" tags="startup" position="275,50" size="100,100">{
+</tw-passagedata><tw-passagedata pid="32" name="startup" tags="startup" position="275,50" size="100,100">{
 (set: $UnderGrad1A to 0)
 (set: $UnderGrad1B to 0)
 (set: $UnderGrad1C to 0)
@@ -577,11 +639,15 @@ Thankfully, your professor deposited a copy of the article into CU Scholar and y
 (Set: $UnderGrad2B to 0)
 (Set: $UnderGrad2C to 0)
 (Set: $UnderGrad2D to 0)
+(set: $UnderGradComplete to 0)
 (set: $GoogSchol to 0)
 (set: $articles to 0)
+(set: $GradStarted to 0)
 (set: $Grad1A to 0)
 (set: $Grad1B to 0)
 (set: $Grad1C to 0)
+(set: $GradComplete to 0)
+(set: $FacultyStarted to 0)
 (set: $Faculty_impact to 0)
 (set: $Faculty_impact_oa to 0)
 (set: $Faculty_impact_paywall to 0)
@@ -592,7 +658,8 @@ Thankfully, your professor deposited a copy of the article into CU Scholar and y
 (set: $Faculty_mono_open to 0)
 (set: $Faculty_mono_open_ethiopian to 0)
 (set: $Faculty_mono_open_publish to 0)
-}</tw-passagedata><tw-passagedata pid="35" name="Submit your article to this journal anyway" tags="" position="1050,525" size="100,100">{
+(set: $FacultyComplete to 0)
+}</tw-passagedata><tw-passagedata pid="33" name="Submit your article to this journal anyway" tags="" position="1050,525" size="100,100">{
 Oh no, your article gets rejected! You’ll need to submit to a different journal.
 
 * (Go back to [[options|Grad Student]])
